@@ -26,5 +26,27 @@ def get_data_yf(ticker, start_date, end_date):
     df = yf.download(ticker, start=start_date, end=end_date, interval='1d', multi_level_index=False)
     return df
 def load_news_data(path):
+    """
+    Load news data from a CSV file.
+    
+    Parameters:
+    path (str): The path to the CSV file.
+    
+    Returns:
+    pd.DataFrame: A DataFrame containing the news data.
+    """
     df = pd.read_csv(path, parse_dates=['date'])
+    return df
+def load_stock_data_from_csv(path):
+    """
+    Load stock data from a CSV file.
+    
+    Parameters:
+    path (str): The path to the CSV file.
+    
+    Returns:
+    pd.DataFrame: A DataFrame containing the stock data.
+    """
+    df = pd.read_csv(path)
+    df.set_index('Date', inplace=True)
     return df
